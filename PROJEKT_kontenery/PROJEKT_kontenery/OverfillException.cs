@@ -2,6 +2,8 @@
 
 public class OverfillException : Exception
 {
-    public OverfillException() : base(" Mass load is bigger than maximum capacity. ")
-    {}
+    public OverfillException(string msg) : base(msg)
+    {
+        
+    }
 }

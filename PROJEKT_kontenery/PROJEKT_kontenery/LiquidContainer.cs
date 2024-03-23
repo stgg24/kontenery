@@ -2,58 +2,74 @@
 
 public class LiquidContainer : Container, IHazardNotifier
 {
-    public bool isDangerous { get; set; }
-    public LiquidContainer( double Height1, double OwnMass1, double Depth1, double MaxLoad1)
+    public bool IsDangerous { get; set; }
+    public LiquidContainer( double height, double ownMass, double depth, double maxLoad)
     {
-        base.Height = Height1;
-        base.OwnWeight = OwnMass1;
-        base.Depth = Depth1;
-        base.LoadMass = 0;
-        base.number++;
-        base.ContainerNumber = "KON-L-" + base.number;
-        base.MaxLoadMass = MaxLoad1;
+        Height = height;
+        OwnWeight = ownMass;
+        Depth = depth;
+        LoadMass = 0;
+        number++;
+        ContainerNumber = "KON-L-" + base.number;
+        MaxLoadMass = maxLoad;
 
     }
 
-    public void LoadLiquidContainer(double LoadMass1, bool isDangerous, String TypeOfLoad1)
+    public void LoadLiquidContainer(double loadMass, bool isDangerous, string type)
     {
-        if (LoadMass > MaxLoadMass)
+        if (TypeOfLoad == null || TypeOfLoad.Equals(type))
         {
-            throw new OverfillException();
-        }
-        else
-        {
-            if (isDangerous && LoadMass + LoadMass1 < MaxLoadMass * 0.5)
+            if (LoadMass + loadMass > MaxLoadMass)
             {
-                LoadMass = LoadMass1;
-                TypeOfLoad = TypeOfLoad1;
-                isDangerous = true;
+                if (isDangerous)
+                {
+                    Notify();
+                }
+
+                throw new OverfillException("Container capacity exceeded");
+
             }
-            else if (LoadMass + LoadMass1 < MaxLoadMass * 0.9)
+
+            if (isDangerous && (LoadMass + loadMass) < MaxLoadMass * 0.5)
             {
-                LoadMass = LoadMass1;
-                TypeOfLoad = TypeOfLoad1;
-                isDangerous = false;
+                LoadMass = loadMass;
+                TypeOfLoad = type;
+                IsDangerous = isDangerous;
+                Console.WriteLine("You've loaded " + loadMass + " of " + type + " to container " + ContainerNumber);
+            }
+            else if (!isDangerous && LoadMass + loadMass < MaxLoadMass * 0.9)
+            {
+                LoadMass = loadMass;
+                TypeOfLoad = type;
+                IsDangerous = isDangerous;
+                Console.WriteLine("You've loaded " + loadMass + " of " + type);
             }
             else
             {
-                notify(ContainerNumber);
+                Notify();
             }
         }
+        else
+        {
+            Console.WriteLine("You've already loaded " + TypeOfLoad + " into container. You can't load " + type + ". Empty container first.");
+        }
+
 
     }
 
     public override void EmptyContainer()
     {
         LoadMass = 0;
+        TypeOfLoad = null;
+        Console.WriteLine("You've  emptied container " + ContainerNumber);
     }
 
     public override void PrintInfo()
     {
-        throw new NotImplementedException();
+        Console.WriteLine("Container: " + ContainerNumber + " Load: " + TypeOfLoad + ", " + LoadMass);
     }
 
-    public void notify(String ContainerNumber)
+    public void Notify()
     {
         Console.WriteLine("Dangerous action. Container: " + ContainerNumber);
     }

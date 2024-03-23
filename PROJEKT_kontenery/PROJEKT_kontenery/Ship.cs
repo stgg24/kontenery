@@ -2,6 +2,7 @@
 
 public class Ship
 {
+    
     public String ShipName { get; set; }
     public double MaxSpeed { get; set; }
     public int MaxContainers { get; set; }
@@ -9,7 +10,7 @@ public class Ship
     
     
     private List<Container> ListOfContainers = new List<Container>();
-    public static int Number = 0;
+    public static int Number = 1;
 
     public Ship(string shipName, int maxContainers, double maxSpeed)
     {
@@ -17,7 +18,7 @@ public class Ship
         ShipName = shipName;
         MaxSpeed = maxSpeed;
         MaxContainers = maxContainers;
-
+        
     }
 
     public void LoadContainer(Container container)
@@ -25,7 +26,7 @@ public class Ship
         if (ListOfContainers.Count < MaxContainers)
         {
             ListOfContainers.Add(container);
-            Console.WriteLine("You've added container successfully!!");
+            Console.WriteLine("You've added container " + container.ContainerNumber + " successfully!!");
         }
         else
         {
@@ -53,6 +54,7 @@ public class Ship
     public void RemoveContainer(Container container)
     {
         ListOfContainers.Remove(container);
+        Console.WriteLine("\nYou've successfully removed " + container.ContainerNumber + " from " + ShipName + " ship");
     }
 
     public void SwapContainers(Container ToSwap, Container NewContainer)
@@ -75,22 +77,24 @@ public class Ship
             {
                 ListOfContainers.Remove(container);
                 ship.ListOfContainers.Add(container);
+                Console.WriteLine("\nYou've moved " +container.ContainerNumber + " to " + ship.ShipName + " ship");
             }
+            
     }
 
     public void PrintInfo()
     {
-        Console.WriteLine("Ship number " + ShipNumber + " currently has " + ListOfContainers.Count +
+        Console.WriteLine("\nShip " + ShipName + " with side number " + ShipNumber + " currently has " + ListOfContainers.Count +
                           " containers. It's maximum capacity is " + MaxContainers + " containers.\nMaximum speed of" +
-                          "that ship is " + MaxSpeed + " knots.");
+                          "that ship is " + MaxSpeed + " knots.\n");
     }
 
     public void PrintLoad()
     {
-        Console.WriteLine("List of containers on this ship:");
+        Console.WriteLine("\nList of containers on " + ShipName + " ship:\n");
         foreach (Container container in ListOfContainers)
         {
-            
+            container.PrintInfo();
         }
     }
     

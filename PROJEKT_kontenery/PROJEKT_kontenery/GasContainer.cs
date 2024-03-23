@@ -16,26 +16,44 @@ public class GasContainer : Container, IHazardNotifier
 
     }
 
-    public void LoadGasContainer(double LoadMass1, double Pressure1, String Type)
+    public void LoadGasContainer(double loadMass, String type, double pressure)
     {
-        if (LoadMass > MaxLoadMass)
-        {
-            throw new OverfillException();
-        }
-
-        LoadMass = LoadMass1;
-        TypeOfLoad = Type;
-        CurrentPressureLevel = Pressure1;
-
+        
+            if(TypeOfLoad == null || TypeOfLoad.Equals(type))
+            {
+                    if (LoadMass + loadMass < MaxLoadMass)
+                    {
+                        LoadMass += loadMass;
+                        TypeOfLoad = type;
+                        CurrentPressureLevel = pressure;
+                        Console.WriteLine("You've loaded " + type + " correctly to " + ContainerNumber + " container.");
+                    }
+                    else
+                    {
+                        throw new OverfillException("Container capacity exceeded");
+                        Notify();
+                        
+                    }
+            }
+            
+            else
+            {
+                Console.WriteLine("You've already loaded " + TypeOfLoad + " into container. You can't load " + type);
+            }
     }
-
+    
     public override void EmptyContainer()
     {
         LoadMass = 0.05 * LoadMass;
+        Console.WriteLine("You've  emptied container " + ContainerNumber);
     }
 
     public override void PrintInfo()
     {
-        throw new NotImplementedException();
+        Console.WriteLine("Container: " + ContainerNumber + " Load: " + TypeOfLoad + ", " + LoadMass);
+    }
+    public void Notify()
+    {
+        Console.WriteLine("Dangerous action. Container: " + ContainerNumber);
     }
 }

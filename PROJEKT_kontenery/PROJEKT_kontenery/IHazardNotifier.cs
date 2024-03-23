@@ -2,6 +2,6 @@
 
 public interface IHazardNotifier
 {
-    void notify(String ContainerNumber){}
+    void Notify(String msg){}
     
 }

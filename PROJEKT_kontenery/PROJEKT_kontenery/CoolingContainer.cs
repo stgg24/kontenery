@@ -6,15 +6,15 @@ public class CoolingContainer : Container
     public new string TypeOfLoad { get; set; }
     public static Dictionary<string, double> Temperatures { get; set; }
     public double TempInContainer { get; set; }
-    public CoolingContainer(double Height1, double OwnMass1, double Depth1, double MaxLoad1, double tempInContainer)
+    public CoolingContainer(double height, double ownMass, double depth, double maxLoad, double tempInContainer)
     {
-        base.Height = Height1;
-        base.OwnWeight = OwnMass1;
-        base.Depth = Depth1;
-        base.LoadMass = 0;
-        base.number++;
-        base.ContainerNumber = "KON-C-" + base.number;
-        base.MaxLoadMass = MaxLoad1;
+        Height = height;
+        OwnWeight = ownMass;
+        Depth = depth;
+        LoadMass = 0;
+        number++;
+        ContainerNumber = "KON-C-" + number;
+        MaxLoadMass = maxLoad;
         TempInContainer = tempInContainer;
 
     }
@@ -24,35 +24,36 @@ public class CoolingContainer : Container
         if (Temperatures.ContainsKey(type))
         {
            if(TypeOfLoad == null || TypeOfLoad.Equals(type))
-            {
-                double temp;
-                Temperatures.TryGetValue(type, out temp);
-                if (temp > TempInContainer)
-                {
-                    if (LoadMass + loadMass < MaxLoadMass)
-                    {
-                        LoadMass += loadMass;
-                        TypeOfLoad = type;
-                        Console.WriteLine("You've loaded " + type + " correctly to this container.");
-                    }
-                    else
-                    {
-                        Console.WriteLine("There's not enough space in container");
-                    }
-                }
-                else
-                {
-                    Console.WriteLine("Temperature in Container is too high");
-                }
-            }
-            else
-            {
-                Console.WriteLine("You've already loaded " + TypeOfLoad + " into container. You can't load " + type + ".\nEmpty container first.");
-            }
+           {
+               double temp;
+               Temperatures.TryGetValue(type, out temp);
+               if (temp > TempInContainer)
+               {
+                   if (LoadMass + loadMass < MaxLoadMass)
+                   {
+                       LoadMass += loadMass;
+                       TypeOfLoad = type;
+                       Console.WriteLine("You've loaded " + type + " correctly to " + ContainerNumber + " container.");
+                   }
+                   else
+                   {
+                       Console.WriteLine("There's not enough space in container");
+                       throw new OverfillException("Container capacity exceeded");
+                   }
+               }
+               else
+               {
+                   Console.WriteLine("Temperature in Container is too high");
+               }
+           }
+           else
+           {
+               Console.WriteLine("You've already loaded " + TypeOfLoad + " into container. You can't load " + type + ". Empty container first.");
+           }
         }
         else
         {
-            Console.WriteLine("You can't load " + type);
+            Console.WriteLine("You can't load " + type + ". Your containters can't store that.");
         }
 
     }
@@ -60,11 +61,12 @@ public class CoolingContainer : Container
     public override void EmptyContainer()
     {
         LoadMass = 0;
+        TypeOfLoad = null;
     }
 
     public override void PrintInfo()
     {
-        Console.WriteLine("Container: " + ContainerNumber + " Load: ");
+        Console.WriteLine("Container: " + ContainerNumber + " Load: " + TypeOfLoad + ", " + LoadMass);
         
     }
 
