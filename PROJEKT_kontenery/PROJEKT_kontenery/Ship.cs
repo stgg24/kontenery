@@ -26,11 +26,11 @@ public class Ship
         if (ListOfContainers.Count < MaxContainers)
         {
             ListOfContainers.Add(container);
-            Console.WriteLine("You've added container " + container.ContainerNumber + " successfully!!");
+            Console.WriteLine("Ship:  [" + ShipName + "] Container: [" + container.ContainerNumber + "] added.");
         }
         else
         {
-            Console.WriteLine("You ship is full.");
+            Console.WriteLine("Ship:  [" + ShipName + "] is full.");
         }
     }
 
@@ -42,19 +42,19 @@ public class Ship
             {
                 ListOfContainers.Add(container);
             }
-            Console.WriteLine("You've successfully added list of containers!");
+            Console.WriteLine("Ship: [" + ShipName + "] Containers added.");
         }
         else
         {
             int NumberOfContainersOverLimit = ListOfContainers.Count + list.Count - MaxContainers;
-            Console.WriteLine("Your ship doesn't have enough space. You need to remove " + NumberOfContainersOverLimit + " containers.");
+            Console.WriteLine("Ship: [" + ShipName + "]  doesn't have enough space. You need to remove " + NumberOfContainersOverLimit + " containers.");
         }
     }
 
     public void RemoveContainer(Container container)
     {
         ListOfContainers.Remove(container);
-        Console.WriteLine("\nYou've successfully removed " + container.ContainerNumber + " from " + ShipName + " ship");
+        Console.WriteLine("Ship:  [" + ShipName + "] Container: [" + container.ContainerNumber + "] removed");
     }
 
     public void SwapContainers(Container ToSwap, Container NewContainer)
@@ -63,11 +63,11 @@ public class Ship
         {
             ListOfContainers.Remove(ToSwap);
             ListOfContainers.Add(NewContainer);
-            Console.WriteLine("You've successfully swapped containers.");
+            Console.WriteLine("Ship:  [" + ShipName + "] Containers swapped.");
         }
         else
         {
-            Console.WriteLine("Container you wanted to remove doesn't belong to this ship.");
+            Console.WriteLine("Container: [" + ToSwap.ContainerNumber + "] is not on Ship: [" + ShipName + "].");
         }
     }
 
@@ -77,25 +77,25 @@ public class Ship
             {
                 ListOfContainers.Remove(container);
                 ship.ListOfContainers.Add(container);
-                Console.WriteLine("\nYou've moved " +container.ContainerNumber + " to " + ship.ShipName + " ship");
+                Console.WriteLine("Container: [" +container.ContainerNumber + "] moved to Ship: [" + ship.ShipName + "].");
             }
             
     }
 
     public void PrintInfo()
     {
-        Console.WriteLine("\nShip " + ShipName + " with side number " + ShipNumber + " currently has " + ListOfContainers.Count +
-                          " containers. It's maximum capacity is " + MaxContainers + " containers.\nMaximum speed of" +
-                          "that ship is " + MaxSpeed + " knots.\n");
+        Console.WriteLine("Ship: [" + ShipName + "], Number: [" + ShipNumber + "], Containers: [" + ListOfContainers.Count +
+                          "], maxCapacity: [" + MaxContainers + "],MaxSpeed: [" + MaxSpeed + "]");
     }
 
     public void PrintLoad()
     {
-        Console.WriteLine("\nList of containers on " + ShipName + " ship:\n");
+        Console.WriteLine("Ship: [" + ShipName + "], List of containers:");
         foreach (Container container in ListOfContainers)
         {
             container.PrintInfo();
         }
+        Console.WriteLine("=========================================");
     }
     
     

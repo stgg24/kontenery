@@ -16,6 +16,9 @@ public abstract class Container
 
     public abstract void EmptyContainer();
 
-    public abstract void PrintInfo();
+    public  void PrintInfo()
+    {
+        Console.WriteLine(ContainerNumber + " -  Load: " + TypeOfLoad + ", " + LoadMass + " kgs");
+    }
 }
 

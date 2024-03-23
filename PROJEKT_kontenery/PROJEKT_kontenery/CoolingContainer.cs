@@ -3,7 +3,6 @@
 public class CoolingContainer : Container
 {
 
-    public new string TypeOfLoad { get; set; }
     public static Dictionary<string, double> Temperatures { get; set; }
     public double TempInContainer { get; set; }
     public CoolingContainer(double height, double ownMass, double depth, double maxLoad, double tempInContainer)
@@ -19,7 +18,7 @@ public class CoolingContainer : Container
 
     }
 
-    public void LoadToContainer(double loadMass, String type)
+    public void LoadToContainer(double loadMass, string type)
     {
         if (Temperatures.ContainsKey(type))
         {
@@ -33,7 +32,8 @@ public class CoolingContainer : Container
                    {
                        LoadMass += loadMass;
                        TypeOfLoad = type;
-                       Console.WriteLine("You've loaded " + type + " correctly to " + ContainerNumber + " container.");
+                       Console.WriteLine(ContainerNumber + " - You've loaded " + loadMass + " kgs of " + type +
+                                         " correctly");
                    }
                    else
                    {
@@ -62,13 +62,10 @@ public class CoolingContainer : Container
     {
         LoadMass = 0;
         TypeOfLoad = null;
+        Console.WriteLine(ContainerNumber + " - You've  emptied container ");
     }
 
-    public override void PrintInfo()
-    {
-        Console.WriteLine("Container: " + ContainerNumber + " Load: " + TypeOfLoad + ", " + LoadMass);
-        
-    }
+    
 
     public static void LoadTemperatures( Dictionary<string, double> temperatures)
     {

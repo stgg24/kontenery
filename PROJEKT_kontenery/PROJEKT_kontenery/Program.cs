@@ -43,6 +43,7 @@ public class Program
             c1.LoadToContainer(200, "Bananas");
             c1.LoadToContainer(200, "Bananas");
             c1.LoadToContainer(30, "Bananas");
+            c1.PrintInfo();
             c1.EmptyContainer();
             c1.LoadToContainer(200, "Chocolate");
             c1.LoadToContainer(300, "Chocolate");

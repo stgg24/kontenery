@@ -26,7 +26,7 @@ public class GasContainer : Container, IHazardNotifier
                         LoadMass += loadMass;
                         TypeOfLoad = type;
                         CurrentPressureLevel = pressure;
-                        Console.WriteLine("You've loaded " + type + " correctly to " + ContainerNumber + " container.");
+                        Console.WriteLine(ContainerNumber + " - You've loaded " +  loadMass + " kgs of " +  type + " correctly");
                     }
                     else
                     {
@@ -45,13 +45,10 @@ public class GasContainer : Container, IHazardNotifier
     public override void EmptyContainer()
     {
         LoadMass = 0.05 * LoadMass;
-        Console.WriteLine("You've  emptied container " + ContainerNumber);
+        Console.WriteLine(ContainerNumber + " - You've  emptied container ");
     }
 
-    public override void PrintInfo()
-    {
-        Console.WriteLine("Container: " + ContainerNumber + " Load: " + TypeOfLoad + ", " + LoadMass);
-    }
+    
     public void Notify()
     {
         Console.WriteLine("Dangerous action. Container: " + ContainerNumber);

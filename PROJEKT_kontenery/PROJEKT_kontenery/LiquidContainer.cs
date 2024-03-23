@@ -32,17 +32,17 @@ public class LiquidContainer : Container, IHazardNotifier
 
             if (isDangerous && (LoadMass + loadMass) < MaxLoadMass * 0.5)
             {
-                LoadMass = loadMass;
+                LoadMass += loadMass;
                 TypeOfLoad = type;
                 IsDangerous = isDangerous;
-                Console.WriteLine("You've loaded " + loadMass + " of " + type + " to container " + ContainerNumber);
+                Console.WriteLine(ContainerNumber + " - You've loaded " + loadMass + " kgs of " + type + " correctly");
             }
             else if (!isDangerous && LoadMass + loadMass < MaxLoadMass * 0.9)
             {
                 LoadMass = loadMass;
                 TypeOfLoad = type;
                 IsDangerous = isDangerous;
-                Console.WriteLine("You've loaded " + loadMass + " of " + type);
+                Console.WriteLine(ContainerNumber + " - You've loaded " + loadMass + " kgs of " + type + " correctly");
             }
             else
             {
@@ -51,7 +51,7 @@ public class LiquidContainer : Container, IHazardNotifier
         }
         else
         {
-            Console.WriteLine("You've already loaded " + TypeOfLoad + " into container. You can't load " + type + ". Empty container first.");
+            Console.WriteLine(ContainerNumber + " - You've already loaded " + TypeOfLoad + ". You can't load " + type + ". Empty container first.");
         }
 
 
@@ -61,16 +61,13 @@ public class LiquidContainer : Container, IHazardNotifier
     {
         LoadMass = 0;
         TypeOfLoad = null;
-        Console.WriteLine("You've  emptied container " + ContainerNumber);
+        Console.WriteLine(ContainerNumber + " - You've  emptied container ");
     }
 
-    public override void PrintInfo()
-    {
-        Console.WriteLine("Container: " + ContainerNumber + " Load: " + TypeOfLoad + ", " + LoadMass);
-    }
+    
 
     public void Notify()
     {
-        Console.WriteLine("Dangerous action. Container: " + ContainerNumber);
+        Console.WriteLine("DANGEROUS ACTION!!!!!!!!. Container: " + ContainerNumber);
     }
 }
