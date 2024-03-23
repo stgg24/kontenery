@@ -16,6 +16,6 @@ public abstract class Container
 
     public abstract void EmptyContainer();
 
-    
+    public abstract void PrintInfo();
 }
 

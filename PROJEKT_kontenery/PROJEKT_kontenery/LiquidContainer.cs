@@ -48,6 +48,11 @@ public class LiquidContainer : Container, IHazardNotifier
         LoadMass = 0;
     }
 
+    public override void PrintInfo()
+    {
+        throw new NotImplementedException();
+    }
+
     public void notify(String ContainerNumber)
     {
         Console.WriteLine("Dangerous action. Container: " + ContainerNumber);

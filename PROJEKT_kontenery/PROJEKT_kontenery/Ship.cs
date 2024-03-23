@@ -87,7 +87,11 @@ public class Ship
 
     public void PrintLoad()
     {
-        
+        Console.WriteLine("List of containers on this ship:");
+        foreach (Container container in ListOfContainers)
+        {
+            
+        }
     }
     
     

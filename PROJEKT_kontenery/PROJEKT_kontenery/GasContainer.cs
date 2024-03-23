@@ -33,4 +33,9 @@ public class GasContainer : Container, IHazardNotifier
     {
         LoadMass = 0.05 * LoadMass;
     }
+
+    public override void PrintInfo()
+    {
+        throw new NotImplementedException();
+    }
 }
