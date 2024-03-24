@@ -1,5 +1,4 @@
-﻿using System.Runtime.Intrinsics.Arm;
-
+﻿
 namespace kontenery;
 
 public class Program
@@ -19,22 +18,11 @@ public class Program
         temperatures.Add("Butter",20.5);
         temperatures.Add("Eggs",19);
         CoolingContainer.LoadTemperatures(temperatures);
-        List<Ship> listOfShips = new List<Ship>();
-        
-        
-        
-        
-        
         
         CoolingContainer c1 = new CoolingContainer(2000, 400, 10000, 2000,8);
         CoolingContainer c2 = new CoolingContainer(3000, 600, 8000, 1500,-30);
         LiquidContainer l1 = new LiquidContainer(2000, 400, 10000, 3000);
         GasContainer g1 = new GasContainer(3000, 2000, 10000, 1000);
-        
-        
-        
-        
-
         Ship alaska = new Ship("Alaska", 20, 80);
         Ship benin = new Ship("benin", 20, 80);
 
@@ -82,42 +70,11 @@ public class Program
             list.Add(t2);
             alaska.LoadListOfContainers(list);
             alaska.PrintInfo();
+            c2.PrintInfo();
         }
         catch (OverfillException ex)
         {
             Console.WriteLine(ex);
         }
-
-
-
     }
-
-    // public static void ShipsList(List<Ship> listOfShips )
-    // {
-    //     Console.WriteLine("List of containers: ");
-    //     foreach (Ship ship in listOfShips)
-    //     {
-    //         ship.PrintInfo();
-    //     }
-    // }
-    // public static void ShipsLoad(List<Ship> listOfShips )
-    // {
-    //     Console.WriteLine("List of containers: ");
-    //     foreach (Ship ship in listOfShips)
-    //     {
-    //         ship.PrintLoad();
-    //     }
-    // }
-    //
-    // public static void PrintMenu()
-    // {
-    //     Console.WriteLine("Actions to take: ");
-    //     Console.WriteLine("(1) Create new ship.");
-    //     Console.WriteLine("(2) Delete current ship");
-    //     Console.WriteLine("(3) Create Container");
-    //     Console.WriteLine("(4) Add container to a ship.");
-    //     Console.WriteLine("(5) Remove Container from ship");
-    //     Console.WriteLine("(6) Delete Container");
-    //     
-    // }
 }

@@ -3,14 +3,15 @@
 public class LiquidContainer : Container, IHazardNotifier
 {
     public bool IsDangerous { get; set; }
+    public static int Number = 0;
     public LiquidContainer( double height, double ownMass, double depth, double maxLoad)
     {
         Height = height;
         OwnWeight = ownMass;
         Depth = depth;
         LoadMass = 0;
-        number++;
-        ContainerNumber = "KON-L-" + base.number;
+        Number++;
+        ContainerNumber = "KON-L-" + Number;
         MaxLoadMass = maxLoad;
 
     }

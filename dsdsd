@@ -1,0 +1,41 @@
+[33mcommit 28b77223e06fe1a7da93aced02f8af4ea8370f9d[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mui_implementation[m[33m)[m
+Author: stgg24 <marcinpokojski0312@gmail.com>
+Date:   Sun Mar 24 00:13:06 2024 +0100
+
+    Wersja bez Interfejsu ukończona.
+
+[33mcommit 5ef93002a47c048add35fe20c3ccc9d16433ad7e[m
+Author: stgg24 <marcinpokojski0312@gmail.com>
+Date:   Sat Mar 23 17:28:25 2024 +0100
+
+    Dodane wszystkie metody, wyjatki i bledy
+
+[33mcommit 8b8dd5e2cbeb823a4206c72e898829d12aca4f20[m
+Author: stgg24 <marcinpokojski0312@gmail.com>
+Date:   Sat Mar 23 03:15:47 2024 +0100
+
+    dodane temperatury i funkcje dla CoolingContainer
+
+[33mcommit 70d8b47431af7cc91e68efdf3c946ef1ac31d64b[m
+Author: stgg24 <marcinpokojski0312@gmail.com>
+Date:   Sat Mar 23 00:45:29 2024 +0100
+
+    Dodana klasa Ship
+
+[33mcommit 96eaad1f5db6bf38e0f0db9c1b81b9c71bae7ada[m
+Author: stgg24 <s26779@pjwstk.edu.pl>
+Date:   Mon Mar 18 18:51:09 2024 +0100
+
+    Status po zajeciach
+
+[33mcommit 5ab14f081870b4912fa41eb2aa3262010bbd0223[m
+Author: stgg24 <s26779@pjwstk.edu.pl>
+Date:   Mon Mar 18 18:01:48 2024 +0100
+
+    hello world
+
+[33mcommit 0a99d12b1b368ca5342342e82f8335e36664622a[m
+Author: stgg24 <88043464+stgg24@users.noreply.github.com>
+Date:   Mon Mar 18 17:52:33 2024 +0100
+
+    Initial commit

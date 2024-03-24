@@ -46,8 +46,8 @@ public class Ship
         }
         else
         {
-            int NumberOfContainersOverLimit = ListOfContainers.Count + list.Count - MaxContainers;
-            Console.WriteLine("Ship: [" + ShipName + "]  doesn't have enough space. You need to remove " + NumberOfContainersOverLimit + " containers.");
+            var numberOfContainersOverLimit = ListOfContainers.Count + list.Count - MaxContainers;
+            Console.WriteLine("Ship: [" + ShipName + "]  doesn't have enough space. You need to remove " + numberOfContainersOverLimit + " containers.");
         }
     }
 
@@ -57,7 +57,7 @@ public class Ship
         Console.WriteLine("Ship:  [" + ShipName + "] Container: [" + container.ContainerNumber + "] removed");
     }
 
-    public void SwapContainers(Container ToSwap, Container NewContainer)
+    public void SwapContainers(Container ToSwap, Container NewContainer )
     {
         if (ListOfContainers.Contains(ToSwap))
         {

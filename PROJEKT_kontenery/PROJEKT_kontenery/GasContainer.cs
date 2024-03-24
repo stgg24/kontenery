@@ -3,20 +3,20 @@
 public class GasContainer : Container, IHazardNotifier
 {
     public double CurrentPressureLevel { get; set; }
-    
-    public GasContainer( double Height1, double OwnMass1, double Depth1, double MaxLoad1)
+    public static int Number = 0;
+    public GasContainer( double height, double ownMass, double depth, double maxLoad)
     {
-        base.Height = Height1;
-        base.OwnWeight = OwnMass1;
-        base.Depth = Depth1;
-        base.LoadMass = 0;
-        base.number++;
-        base.ContainerNumber = "KON-G-" + base.number;
-        base.MaxLoadMass = MaxLoad1;
+        Height = height;
+        OwnWeight = ownMass;
+        Depth = depth;
+        LoadMass = 0;
+        Number++;
+        ContainerNumber = "KON-G-" + Number;
+        MaxLoadMass = maxLoad;
 
     }
 
-    public void LoadGasContainer(double loadMass, String type, double pressure)
+    public void LoadGasContainer(double loadMass, string type, double pressure)
     {
         
             if(TypeOfLoad == null || TypeOfLoad.Equals(type))

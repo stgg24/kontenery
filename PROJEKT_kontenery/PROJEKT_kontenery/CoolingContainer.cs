@@ -5,14 +5,15 @@ public class CoolingContainer : Container
 
     public static Dictionary<string, double> Temperatures { get; set; }
     public double TempInContainer { get; set; }
+    public static int Number = 0;
     public CoolingContainer(double height, double ownMass, double depth, double maxLoad, double tempInContainer)
     {
         Height = height;
         OwnWeight = ownMass;
         Depth = depth;
         LoadMass = 0;
-        number++;
-        ContainerNumber = "KON-C-" + number;
+        Number++;
+        ContainerNumber = "KON-C-" + Number;
         MaxLoadMass = maxLoad;
         TempInContainer = tempInContainer;
 
